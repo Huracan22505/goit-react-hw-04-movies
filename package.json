@@ -21,7 +21,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "netlify deploy -p",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -49,6 +49,5 @@
     "husky": "^4.3.7",
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1"
-  },
-  "homepage": "https://huracan22505.github.io/goit-react-hw-04-movies"
+  }
 }
