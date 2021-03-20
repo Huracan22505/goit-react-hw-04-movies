@@ -1,0 +1,15 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  width: 200px;
+
+  margin-bottom: 20px;
+}
+
+.img {
+  width: 200px;
+  height: 300px;
+}

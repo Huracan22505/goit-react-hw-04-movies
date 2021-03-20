@@ -25,10 +25,23 @@ h4 {
 
 li {
   list-style: none;
+
+  margin-left: 50px;
 }
 
 img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+/* for practice */
+
+.navLink {
+  font-size: 20px;
+  color: currentColor;
+}
+
+.navLinkActive {
+  color: palevioletred;
 }
