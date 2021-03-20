@@ -12,7 +12,7 @@ class MoviesPage extends Component {
   };
 
   componentDidMount() {
-    if (this.props.location.search !== '') {
+    if (this.props.location.search) {
       this.fetch(this.props.location.search.slice(7));
     }
   }
