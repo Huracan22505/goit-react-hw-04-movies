@@ -11,11 +11,11 @@ class MoviesPage extends Component {
     movies: [],
   };
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.props.location.search !== prevProps.location.search) {
-  //     this.fetch(this.state.query);
-  //   }
-  // }
+  componentDidMount() {
+    if (this.props.location.search !== '') {
+      this.fetch(this.props.location.search.slice(7));
+    }
+  }
 
   hendleChange = e => {
     this.setState({ query: e.currentTarget.value.toLowerCase() });
@@ -63,20 +63,11 @@ class MoviesPage extends Component {
             value={this.state.query}
             onChange={this.hendleChange}
           />
-          {/* <Link to={`${this.props.match.url}?query=${this.state.query}`}> */}
           <button type="submit">
             <span className={s.searchFormButtonLabel}>Search</span>
           </button>
-          {/* </Link> */}
         </form>
 
-        {/* <Route
-          path="/movies?query=cat"
-          render={props => {
-            console.log('sd');
-            return <h1>sdsd</h1>;
-          }}
-        /> */}
         <MoviesList movies={movies} />
       </>
     );
