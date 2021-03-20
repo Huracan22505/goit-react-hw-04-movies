@@ -1,5 +1,5 @@
 import s from './Cast.module.css';
-import React, { Component } from 'react';
+import { Component } from 'react';
 import axios from 'axios';
 import defaultImage from './defaultImg.png';
 
