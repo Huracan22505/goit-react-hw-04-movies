@@ -4,36 +4,18 @@ import React, { Component } from 'react';
 import { Route, NavLink, Switch } from 'react-router-dom';
 import routes from 'routes';
 
+import defaultImage from 'components/Cast/defaultImg.png';
+
 import Cast from 'components/Cast';
 import Reviews from 'components/Reviews';
 
 export default class MovieDetailsPage extends Component {
   state = {
-    adult: null,
-    backdrop_path: null,
-    belongs_to_collection: null,
-    budget: null,
     genres: null,
-    homepage: null,
-    id: null,
-    imdb_id: null,
-    original_language: null,
-    original_title: null,
     overview: null,
-    popularity: null,
     poster_path: null,
-    production_companies: null,
-    production_countries: null,
-    release_date: null,
-    revenue: null,
-    runtime: null,
-    spoken_languages: null,
-    status: null,
-    tagline: null,
     title: null,
-    video: null,
     vote_average: null,
-    vote_count: null,
   };
 
   async componentDidMount() {
@@ -50,6 +32,8 @@ export default class MovieDetailsPage extends Component {
   hendleGoBack = () => {
     const { location, history } = this.props;
 
+    console.log(location);
+
     // if (location.state && location.state.from) {
     //   return history.push(location.state.from);
     // }
@@ -57,11 +41,21 @@ export default class MovieDetailsPage extends Component {
     // history.push(routes.home);
 
     history.push(location?.state?.from || routes.home);
+
+    // history.replace({
+    //   pathname: 'home',
+    //   search: '?query=abc',
+    //   state: { isActive: true },
+    // });
   };
 
   render() {
     const { title, vote_average, overview, genres, poster_path } = this.state;
     const { match } = this.props;
+
+    const imageCheck = poster_path
+      ? `https://image.tmdb.org/t/p/w500${poster_path}`
+      : defaultImage;
 
     return (
       <div className={`container`}>
@@ -69,11 +63,7 @@ export default class MovieDetailsPage extends Component {
           Go back
         </button>
         <div className={s.container}>
-          <img
-            className={s.img}
-            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-            alt=""
-          ></img>
+          <img className={s.img} src={imageCheck} alt=""></img>
           <div className={s.textContainer}>
             <h3 className={s.name}>{title}</h3>
             <p className={s.text}>User Score: {`${vote_average * 10}%`}</p>
@@ -100,7 +90,10 @@ export default class MovieDetailsPage extends Component {
                     color: 'white',
                   }}
                   className={s.link}
-                  to={`${match.url}/cast`}
+                  to={{
+                    pathname: `${match.url}/cast`,
+                    state: { ...this.props.location.state },
+                  }}
                 >
                   Cast
                 </NavLink>
@@ -112,7 +105,10 @@ export default class MovieDetailsPage extends Component {
                     color: 'white',
                   }}
                   className={s.link}
-                  to={`${match.url}/reviews`}
+                  to={{
+                    pathname: `${match.url}/reviews`,
+                    state: { ...this.props.location.state },
+                  }}
                 >
                   Reviews
                 </NavLink>

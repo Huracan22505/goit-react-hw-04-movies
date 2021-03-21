@@ -5,7 +5,7 @@ import { Link, withRouter } from 'react-router-dom';
 const MoviesList = ({ movies, location }) => {
   return (
     <ul className={`${s.list} list`}>
-      {movies.map(({ id, title, poster_path }) => (
+      {movies.map(({ id, poster_path }) => (
         <li className={s.item} key={id}>
           <Link
             to={{

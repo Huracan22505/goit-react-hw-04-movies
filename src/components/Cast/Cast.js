@@ -17,8 +17,6 @@ class Cast extends Component {
     this.setState({
       cast: response.data.cast,
     });
-
-    console.log(response.data.cast);
   }
 
   render() {
