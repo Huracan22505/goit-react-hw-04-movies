@@ -8,15 +8,13 @@ import routes from 'routes';
 import AppBar from 'components/AppBar';
 
 const Homepage = lazy(() =>
-  import('components/Homepage' /* webpackChunkName: "Homepage" */),
+  import('view/Homepage' /* webpackChunkName: "Homepage" */),
 );
 const MoviesPage = lazy(() =>
-  import('components/MoviesPage' /* webpackChunkName: "MoviesPage" */),
+  import('view/MoviesPage' /* webpackChunkName: "MoviesPage" */),
 );
 const MovieDetailsPage = lazy(() =>
-  import(
-    'components/MovieDetailsPage' /* webpackChunkName: "MovieDetailsPage" */
-  ),
+  import('view/MovieDetailsPage' /* webpackChunkName: "MovieDetailsPage" */),
 );
 
 class App extends Component {

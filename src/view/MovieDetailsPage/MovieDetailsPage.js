@@ -1,13 +1,17 @@
 import s from './MovieDetailsPage.module.css';
 import axios from 'axios';
-import React, { Component } from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 import { Route, NavLink, Switch } from 'react-router-dom';
 import routes from 'routes';
 
 import defaultImage from 'components/Cast/defaultImg.png';
 
-import Cast from 'components/Cast';
-import Reviews from 'components/Reviews';
+const Cast = lazy(() =>
+  import('components/Cast' /* webpackChunkName: "Cast" */),
+);
+const Reviews = lazy(() =>
+  import('components/Reviews' /* webpackChunkName: "Reviews" */),
+);
 
 export default class MovieDetailsPage extends Component {
   state = {
@@ -38,15 +42,7 @@ export default class MovieDetailsPage extends Component {
     //   return history.push(location.state.from);
     // }
 
-    // history.push(routes.home);
-
     history.push(location?.state?.from || routes.home);
-
-    // history.replace({
-    //   pathname: 'home',
-    //   search: '?query=abc',
-    //   state: { isActive: true },
-    // });
   };
 
   render() {
@@ -116,10 +112,12 @@ export default class MovieDetailsPage extends Component {
             </ul>
           </div>
         </div>
-        <Switch>
-          <Route path={`${match.path}/cast`} component={Cast} />
-          <Route path={`${match.path}/reviews`} component={Reviews} />
-        </Switch>
+        <Suspense fallback={<b>Загружаем...</b>}>
+          <Switch>
+            <Route path={`${match.path}/cast`} component={Cast} />
+            <Route path={`${match.path}/reviews`} component={Reviews} />
+          </Switch>
+        </Suspense>
       </div>
     );
   }
