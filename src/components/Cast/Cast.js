@@ -25,7 +25,7 @@ class Cast extends Component {
     const { cast } = this.state;
 
     return (
-      <ul className={s.list}>
+      <ul className={`${s.list} list`}>
         {cast.map(el => {
           return (
             <li className={s.item} key={el.credit_id}>
@@ -38,8 +38,8 @@ class Cast extends Component {
                 }
                 alt={el.name}
               ></img>
-              <h4>{el.name}</h4>
-              <p>{el.character}</p>
+              <h4 className={s.title}>{el.name}</h4>
+              <p className={s.text}>{el.character}</p>
             </li>
           );
         })}

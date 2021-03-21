@@ -64,41 +64,67 @@ export default class MovieDetailsPage extends Component {
     const { match } = this.props;
 
     return (
-      <>
-        <button type="button" onClick={this.hendleGoBack}>
+      <div className={`container`}>
+        <button className={s.button} type="button" onClick={this.hendleGoBack}>
           Go back
         </button>
-        <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt=""></img>
-        <h3>{title}</h3>
-        <p>User Score: {`${vote_average * 10}%`}</p>
-        <h4>Overview</h4>
-        <p>{overview}</p>
+        <div className={s.container}>
+          <img
+            className={s.img}
+            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+            alt=""
+          ></img>
+          <div className={s.textContainer}>
+            <h3 className={s.name}>{title}</h3>
+            <p className={s.text}>User Score: {`${vote_average * 10}%`}</p>
+            <h4 className={s.title}>Overview</h4>
+            <p className={s.text}>{overview}</p>
 
-        {genres && (
-          <>
-            <h4>Genres</h4>
-            <ul>
-              {genres.map(genre => (
-                <li key={genre.id}>{genre.name}</li>
-              ))}
+            {genres && (
+              <>
+                <h4 className={s.title}>Genres</h4>
+                <ul className={`${s.list} list`}>
+                  {genres.map(genre => (
+                    <li key={genre.id}>{genre.name}</li>
+                  ))}
+                </ul>
+              </>
+            )}
+
+            <h4 className={s.title}>Additional information</h4>
+            <ul className={`${s.list} list`}>
+              <li>
+                <NavLink
+                  activeStyle={{
+                    fontWeight: 'bold',
+                    color: 'white',
+                  }}
+                  className={s.link}
+                  to={`${match.url}/cast`}
+                >
+                  Cast
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  activeStyle={{
+                    fontWeight: 'bold',
+                    color: 'white',
+                  }}
+                  className={s.link}
+                  to={`${match.url}/reviews`}
+                >
+                  Reviews
+                </NavLink>
+              </li>
             </ul>
-          </>
-        )}
-
-        <p>Additional information</p>
-        <ul>
-          <li>
-            <NavLink to={`${match.url}/cast`}>Cast</NavLink>
-          </li>
-          <li>
-            <NavLink to={`${match.url}/reviews`}>Reviews</NavLink>
-          </li>
-        </ul>
+          </div>
+        </div>
         <Switch>
           <Route path={`${match.path}/cast`} component={Cast} />
           <Route path={`${match.path}/reviews`} component={Reviews} />
         </Switch>
-      </>
+      </div>
     );
   }
 }

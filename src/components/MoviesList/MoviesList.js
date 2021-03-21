@@ -4,16 +4,20 @@ import { Link, withRouter } from 'react-router-dom';
 
 const MoviesList = ({ movies, location }) => {
   return (
-    <ul>
-      {movies.map(({ id, title }) => (
-        <li key={id}>
+    <ul className={`${s.list} list`}>
+      {movies.map(({ id, title, poster_path }) => (
+        <li className={s.item} key={id}>
           <Link
             to={{
               pathname: `movies/${id}`,
               state: { from: location },
             }}
           >
-            {title}
+            <img
+              className={s.img}
+              src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+              alt=""
+            ></img>
           </Link>
         </li>
       ))}

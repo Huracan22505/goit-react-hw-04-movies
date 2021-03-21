@@ -53,7 +53,7 @@ a {
 /* for practice */
 
 .navLink {
-  font-size: 20px;
+  font-size: inherit;
   color: currentColor;
 }
 

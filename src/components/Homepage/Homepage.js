@@ -23,10 +23,10 @@ export default class Homepage extends Component {
     const { movies } = this.state;
 
     return (
-      <>
-        <h1>Trending today</h1>
+      <div className={`container`}>
+        <h1 className={s.title}>Trending today</h1>
         <MoviesList movies={movies} />
-      </>
+      </div>
     );
   }
 }

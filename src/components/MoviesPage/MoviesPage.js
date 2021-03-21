@@ -54,7 +54,7 @@ class MoviesPage extends Component {
     const { movies } = this.state;
 
     return (
-      <>
+      <div className={`container ${s.container}`}>
         <form className={s.searchForm} onSubmit={this.hendleSubmit}>
           <input
             className={s.searchFormInput}
@@ -69,7 +69,7 @@ class MoviesPage extends Component {
         </form>
 
         <MoviesList movies={movies} />
-      </>
+      </div>
     );
   }
 }

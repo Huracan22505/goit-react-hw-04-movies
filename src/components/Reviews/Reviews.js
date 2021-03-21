@@ -22,12 +22,12 @@ class Reviews extends Component {
     const { reviews } = this.state;
 
     return reviews.length > 0 ? (
-      <ul>
+      <ul className={`${s.list} list`}>
         {reviews.map(({ id, author, content }) => {
           return (
-            <li key={id}>
-              <h4>{`Author: ${author}`}</h4>
-              <p>{content}</p>
+            <li className={s.item} key={id}>
+              <h4 className={s.title}>{`Author: ${author}`}</h4>
+              <p className={s.text}>{content}</p>
             </li>
           );
         })}

@@ -5,8 +5,8 @@ import { NavLink } from 'react-router-dom';
 const Navigation = () => {
   return (
     <nav>
-      <ul>
-        <li>
+      <ul className={`${s.list} list`}>
+        <li className={s.item}>
           <NavLink
             exact
             to={routes.home}
@@ -16,7 +16,7 @@ const Navigation = () => {
             Home
           </NavLink>
         </li>
-        <li>
+        <li className={s.item}>
           <NavLink
             to={routes.movies}
             className="navLink"
