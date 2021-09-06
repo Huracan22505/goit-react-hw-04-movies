@@ -17,6 +17,7 @@ const MoviesList = ({ movies, location }) => {
               className={s.img}
               src={`https://image.tmdb.org/t/p/w500${poster_path}`}
               alt=""
+              width={280}
             ></img>
           </Link>
         </li>

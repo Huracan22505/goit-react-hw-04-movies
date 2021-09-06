@@ -1,8 +1,10 @@
 import { Component, Suspense, lazy } from 'react';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import s from './App.module.css';
 import { Route, Switch } from 'react-router-dom';
+import Loader from 'react-loader-spinner';
 
 import routes from 'routes';
 import AppBar from 'components/AppBar';
@@ -23,7 +25,17 @@ class App extends Component {
       <>
         <AppBar />
 
-        <Suspense fallback={<b>Загружаем...</b>}>
+        <Suspense
+          fallback={
+            <Loader
+              type="Puff"
+              color="#00BFFF"
+              height={100}
+              width={100}
+              timeout={3000} //3 secs
+            />
+          }
+        >
           <Switch>
             <Route exact path={routes.home} component={Homepage} />
             <Route exact path={routes.movies} component={MoviesPage} />
